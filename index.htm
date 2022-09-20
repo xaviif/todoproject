@@ -4,10 +4,57 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" src="/assets/css/style.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="http://fonts.cdnfonts.com/css/georgia" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css"/>
   <title>todo list</title>
 </head>
+
+
 <body>
+  <div class="container">
+    <h2 class="row p-0 my-5">New Task</h2>
+    <form>
+      <div class="row my-5">
+        <div class="col-6 p-0">  
+          <label for="title">Title</label><br>
+          <input type="text" id="title" name="title" class="px-5">
+        </div>
+        <div class="col-6">
+          <label for="assigned">Assigned To</label><br>
+          <input type="text" id="assigned" name="assigned" class="px-5">
+        </div>
+      </div>
   
+      <div class="row my-5">
+          <label class="col-12 p-0" for="description">Description</label>
+          <input class="col-9 p-3" type="text" id="description" name="description">
+      </div>
+  
+      <div class="row my-5">
+        <div class="col-6 p-0">
+          <label for="status">Status</label><br>
+            <select name="status" id="status">
+              <option value="todo">To Do</option>
+              <option value="progress">In Progress</option>
+              <option value="review">Review</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        <div class="col-6">
+          <label for="due">Due Date</label><br>
+          <input type="date">
+        </div>
+      </div>
+  
+      <div class="row my-5">
+        <button type="button" class="btn btn-primary px-4 mx-auto">Add Task</button>
+      </div>
+    </form>
+    </div>
+    <div class="container">
+      <h2 class="row p-0">Task List</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
