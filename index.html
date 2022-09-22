@@ -25,18 +25,18 @@
           <label for="assigned">Assigned To</label><br>
           <input type="text" id="assigned" name="assigned" class="px-5">
         </div>
-      </div>
-      <!-- Description Box -->
-      <div class="row my-5">
+        </div>
+        
+        <div class="row my-5">
           <label class="col-12 p-0" for="description">Description</label>
           <input class="col-9 p-3" type="text" id="description" name="description">
-      </div>
-      <!-- Status Box Dropdown -->
+        </div>
+
       <div class="row my-5">
         <div class="col-6 p-0">
           <label for="status">Status</label><br>
             <select name="status" id="status">
-              <option value="todo">To Do</option>
+              <gitoption value="todo">To Do</option>
               <option value="progress">In Progress</option>
               <option value="review">Review</option>
               <option value="done">Done</option>
@@ -44,12 +44,11 @@
           </div>
           <!-- Date Box -->
         <div class="col-6">
-          <label for="due">Date</label><br>
-
-          <input type="date">
+          <label for="due">9/30/22</label><br>
+          <input type="Due date">
         </div>
       </div>
-      <!-- Task Button -->
+
       <div class="row my-5">
         <button type="button" class="btn btn-primary px-4 mx-auto">Add Task</button>
       </div>
@@ -59,32 +58,38 @@
   <section class="container tasklist">
     <!-- Tasks Heading -->
     <h2 class="row p-0">Tasks</h2>
-    <!-- Card One -->
+    
     <ul class="list-group">
       <li class="list-group-item w-25 border-0">
         <div class="card">
 
-          <div class="card-body">
-            <div class="px-0">
-              <div class="row">
-                <div class="col">
-                  <h6 class="d-inline float-left">Finish todo project</h6>
+        <div class="card-body">
+         <div class="px-0">
+          <div class="row">
+             <div class="col">
+               <h6 class="d-inline float-left">Finish todo project</h6>
                 </div>
-                <div class="col">
-                  <h6 class="bg-success text-right d-inline float-right rounded px-2">Status</h6>
-                </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <h6>Assigned To</h6>
+               <div class="col" class:="custom-select">
+                <label for="status">Status</label>
+                <select>
+                  <option value="">To Do</option>
+                  <option value="">In Progress</option>
+                  <option value="">Review</option>
+                  <option value="">Done</option>
+                 </select>
+               </div>
+                 </div>
+                   <div class="row">
+                   <div class="col">
+                        <h6>Assigned To</h6>
                   </div>
                 <div class="col">
-                <h6 class="text-right">39/3/20</h6>
+                        <h6 class="text-right">9/3/22</h6>
                 </div>
                 </div>
                 <div class="row">
                   <div class="col">
-                    <p>Add working form</p>
+                      <p>Add working form</p>
                 </div>
                 </div>
                 <div class="row">
@@ -113,7 +118,14 @@
                   <h6 class="d-inline float-left">Catch up on Codeacademy</h6>
                 </div>
                 <div class="col">
-                  <h6 class="bg-success text-right d-inline float-right rounded px-2">Status</h6>
+                  <label for="status">Status</label>
+                  <h6 class="bg-success text-right d-inline float-right rounded px-0" class:="custom-select">
+                    <select>
+                      <option value="">To Do</option>
+                      <option value="">In Progress</option>
+                      <option value="">Review</option>
+                      <option value="">Done</option>
+                     </select>
                 </div>
                 </div>
                 <div class="row">
@@ -121,7 +133,7 @@
                     <h6>Assigned To</h6>
                   </div>
                 <div class="col">
-                <h6 class="text-right">20/30/30</h6>
+                <h6 class="text-right">9/30/22</h6>
                 </div>
                 </div>
                 <div class="row">
@@ -155,7 +167,14 @@
                   <h6 class="d-inline float-left">Buy groceries</h6>
                 </div>
                 <div class="col">
-                  <h6 class="bg-success text-right d-inline float-right rounded px-2">Status</h6>
+                <label for="status">Status</label>
+                  <h6 class="bg-success text-right d-inline float-right rounded px-0" class:="custom-select">
+                    <select>
+                      <option value="">To Do</option>
+                      <option value="">In Progress</option>
+                      <option value="">Review</option>
+                      <option value="">Done</option>
+                     </select>
                 </div>
                 </div>
                 <div class="row">
@@ -163,7 +182,7 @@
                     <h6>Assigned To</h6>
                   </div>
                 <div class="col">
-                <h6 class="text-right">20/20/20</h6>
+                <h6 class="text-right">9/22/22</h6>
                 </div>
                 </div>
                 <div class="row">
@@ -197,7 +216,14 @@
                   <h6 class="d-inline float-left">Push changes to repo</h6>
                 </div>
                 <div class="col">
-                  <h6 class="bg-success text-right d-inline float-right rounded px-2">Status</h6>
+                  <label for="status">Status</label>
+                  <h6 class="bg-success text-right d-inline float-right rounded px-0" class:="custom-select">
+                    <select>
+                      <option value="">To Do</option>
+                      <option value="">In Progress</option>
+                      <option value="">Review</option>
+                      <option value="">Done</option>
+                     </select>
                 </div>
                 </div>
                 <div class="row">
@@ -205,7 +231,7 @@
                     <h6>Assigned To</h6>
                   </div>
                 <div class="col">
-                <h6 class="text-right">2/2/30</h6>
+                <h6 class="text-right">9/23/22</h6>
                 </div>
                 </div>
                 <div class="row">
@@ -239,7 +265,14 @@
                   <h6 class="d-inline float-left">Set up interview</h6>
                 </div>
                 <div class="col">
-                  <h6 class="bg-success text-right d-inline float-right rounded px-2">Status</h6>
+                  <label for="status">Status</label>
+                  <h6 class="bg-success text-right d-inline float-right rounded px-0" class:="custom-select">
+                    <select>
+                      <option value="">To Do</option>
+                      <option value="">In Progress</option>
+                      <option value="">Review</option>
+                      <option value="">Done</option>
+                     </select>
                 </div>
                 </div>
                 <div class="row">
@@ -247,7 +280,7 @@
                     <h6>Assigned To</h6>
                   </div>
                 <div class="col">
-                <h6 class="text-right">10/2/20</h6>
+                <h6 class="text-right">9/24/22</h6>
                 </div>
                 </div>
                 <div class="row">
