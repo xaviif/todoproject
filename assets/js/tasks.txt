@@ -1,0 +1,19 @@
+Technical skills - Task 4
+  -All form fields are validated on form submission(Name, Description, AssignedTo, DueDate, Status).
+  ---A meaningful error message is displayed when a form field is invalid.
+  -The JavaScript code is in a separate file and the file is included in the HTML page with no errors.
+
+Technical skills - Task 5
+  -The JSON format represents objects in JavaScript.
+  -Classes are correctly defined using JavaScript.
+  -Class functions are correctly defined using JavaScript.
+
+Technical skills - Task 6
+  --When a new task is added with valid information, the task data must be stored in an array variable inside the JavaScript file.
+  -The added task should be visible on the current tasks list and should display the task information.
+  ---When adding a new task, the task id should be incremented and unique.
+
+Technical skills - Task 7
+  When clicking a task from the task list, the task information is displayed on the task form and the save button is renamed to “update”.
+  When the update button is clicked, both the task card and the task object inside the TaskManger class is updated.
+  When the task is updated, the button on the form should be renamed to “save” and the form fields are empty again.
