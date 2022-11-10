@@ -4,27 +4,29 @@
  * innerHTML and replaces {{data}} with an appropiate value from the given object. 
  */
 class Task{
-  constructor(data){
+  constructor(data, id){
     /**
-     * creates a template by cloning taskItem. 
-     * in it's current form, it's a string. 
-     * Mustache converts String into html in the display function.
+     * this.arr = {
+     *  title: String
+     *  desc: String
+     *  assignedTo: String
+     *  date: Date
+     *  id: String
+     * }
+     * Mustache will replace {{key}} with given value
      */
     this.$ = document.getElementById("taskItem").cloneNode(true).innerHTML
     this.arr = data
+    this.arr.id = 'task_'+id
+  }
+  get info(){
+    return this.arr;
   }
 }
 
 Task.prototype.display = function(parent){
-  /**
-   * this.arr = {
-   *  title: String
-   *  desc: String
-   *  assignedTo: String
-   *  date: Date
-   * }
-   * Mustache will replace {{key}} with given value
-   */
   let ad = Mustache.render(this.$, this.arr);
   parent.innerHTML += ad
+  this.$ = document.getElementById(this.arr.id)
+  
 }

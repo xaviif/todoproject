@@ -4,3 +4,19 @@ body {
 .error{
   border-bottom-color: red;
 }
+.card{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 5px 0px;
+  transition: all 500ms;
+}
+.card:hover{
+  transform: scale(1.12);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 25px 10px;
+  z-index: 1;
+  transition: all 200ms;
+}
+.card:active{
+  transform: scale(1.1);
+  background-color: rgba(100, 100, 111, 0.2);
+  transition: all 90ms;
+
+}

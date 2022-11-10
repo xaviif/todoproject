@@ -6,42 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/style.css"/>
-  <script id="taskItem" type="x-tmpl-mustache">
-    <li class="list-group-item w-25 border-0">
-      <div class="card">
-        <div class="card-body">
-          <div class="px-0">
-            <div class="row">
-              <div class="col">
-                <h6 class="d-inline float-left">{{title}}</h6>
-              </div>
-              <div class="col">
-                <label for="status">{{status}}</label>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <h6>{{assignedTo}}</h6>
-                </div>
-              <div class="col">
-                <h6 class="text-right">{{date}}</h6>
-              </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                  <p>{{desc}}</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col">
-                <form class="text-right">
-                  <button type="button" class="btn btn-sm btn-success">
-                    Done
-                  </button>
-                  <button type="button" class="btn btn-sm btn-danger">
-                    Delete
-                  </button>
-                </form>
-              </div>
+  <script id="taskItem" type="text/template">
+    <li class="w-25 m-2 card" id="{{id}}">
+      <div class="card-body">
+        <div class="px-0">
+          <div class="row">
+            <div class="col">
+              <h3 class="d-inline">{{title}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h6>{{assignedTo}}</h6>
+            </div>
+            <div class="col text-right">
+              <h6>{{status}}</h6>
+              <h6 >{{date}}</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <p>{{desc}}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <form class="text-right">
+                <button type="button" class="btn btn-sm btn-success">
+                  Done
+                </button>
+                <button type="button" class="btn btn-sm btn-danger">
+                  Delete
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -61,33 +58,51 @@
         <div class="col-6 p-0">  
           <label for="title">Title</label><br>
           <input type="text" id="title" key="title" name="title" class="px-5">
+          <div class="alert-warning col-6 invisible" role="alert">
+            <p>Enter a name</p>
+          </div>
         </div>
          <!-- Assigned To Box -->
         <div class="col-6">
           <label for="assigned">Assigned To</label><br>
           <input type="text" id="assigned" key="assignedTo" name="assigned" class="px-5">
+
+          <div class="alert-warning col-6 invisible" role="alert">
+            <p>Enter a name</p>
+          </div>
         </div>
         </div>
         
         <div class="row my-5">
           <label class="col-12 p-0" for="description">Description</label>
           <input class="col-9 p-3" type="text" key="desc" id="description" name="description">
+
+          <div class="alert-warning col-9 invisible" role="alert">
+            <p>Enter a description.</p>
+          </div>
         </div>
 
       <div class="row my-5">
         <div class="col-6 p-0">
           <label for="status">Status</label><br>
             <select key="status" name="status" id="status">
-              <option value="todo">To Do</option>
-              <option value="progress">In Progress</option>
-              <option value="review">Review</option>
-              <option value="done">Done</option>
+              <option value="" selected=""selected></option>
+              <option value="to-do">to-do</option>
+              <option value="In-Progress">In-Progress</option>
+              <option value="Review">Review</option>
+              <option value="Done">Done</option>
             </select>
+            <div class="alert-warning col-6 invisible" role="alert">
+              <p>Pick a status</p>
+            </div>
           </div>
           <!-- Date Box -->
         <div class="col-6">
-          <label for="due">9/30/22</label><br>
-          <input key="date" type="Due date">
+          <label for="due">Due Date</label><br>
+          <input key="date" type="date">
+          <div class="alert-warning col-6 invisible" role="alert">
+            <p>Pick a date</p>
+          </div>
         </div>
       </div>
 
@@ -101,7 +116,7 @@
     <!-- Tasks Heading -->
     <h2 class="row p-0">Tasks</h2>
     
-    <ul class="list-group">
+    <ul class="list-group w-100 d-flex flex-row flex-wrap">
       
     </ul>
   </section>
