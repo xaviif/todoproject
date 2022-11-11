@@ -15,9 +15,11 @@ class Task{
      * }
      * Mustache will replace {{key}} with given value
      */
-    this.$ = document.getElementById("taskItem").cloneNode(true).innerHTML
+    this.template = document.getElementById("taskItem").cloneNode(true).innerHTML
+    this.$;
     this.arr = data
     this.arr.id = 'task_'+id
+    this.parent;
   }
   get info(){
     return this.arr;
@@ -25,8 +27,38 @@ class Task{
 }
 
 Task.prototype.display = function(parent){
-  let ad = Mustache.render(this.$, this.arr);
-  parent.innerHTML += ad
+  this.parent = parent;
+  let ad = Mustache.render(this.template, this.arr);
+  parent.insertAdjacentHTML("beforeend", ad)
   this.$ = document.getElementById(this.arr.id)
   
+}
+
+Task.prototype.hide = function(){
+  this.$.classList.add("card-hidden")
+}
+
+Task.prototype.pop = function(){
+  this.$.classList.add("clickedOn")
+}
+
+Task.prototype.resetStyle = function(){
+  if(this.$.classList.contains("card-hidden"))
+    this.$.classList.remove("card-hidden")
+  
+  if(this.$.classList.contains("clickedOn"))
+    this.$.classList.remove("clickedOn")
+  console.log("style reset")
+}
+
+
+Task.prototype.updateInfo = function(x){
+  this.$.remove()
+  let id = this.arr.id;
+  this.arr = x;
+  this.arr.id = id;
+
+  let ad = Mustache.render(this.template, this.arr);
+  this.parent.insertAdjacentHTML("beforeend", ad)
+  this.$ = document.getElementById(this.arr.id)
 }

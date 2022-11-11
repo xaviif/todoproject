@@ -14,6 +14,6 @@ Technical skills - Task 6
   ---When adding a new task, the task id should be incremented and unique.
 
 Technical skills - Task 7
-  When clicking a task from the task list, the task information is displayed on the task form and the save button is renamed to “update”.
-  When the update button is clicked, both the task card and the task object inside the TaskManger class is updated.
-  When the task is updated, the button on the form should be renamed to “save” and the form fields are empty again.
+  --When clicking a task from the task list, the task information is displayed on the task form and the save button is renamed to “update”.
+  --When the update button is clicked, both the task card and the task object inside the TaskManger class is updated.
+  --When the task is updated, the button on the form should be renamed to “save” and the form fields are empty again.

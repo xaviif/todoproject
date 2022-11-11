@@ -1,18 +1,21 @@
+*{scroll-behavior: smooth;}
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: #f9f3f3;
+  margin:0;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif; 
 }
 
-html {
-    height:100%;
-}
- 
-body {
-    margin:0;
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-100vw, 0, 0);
+  }
 }
  
 .bg {
-    animation:slide 3s ease-in-out infinite alternate;
+    animation: slide ease-in-out infinite alternate;
     background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
     bottom:0;
     left:-50%;
@@ -25,11 +28,11 @@ body {
  
 .bg2 {
     animation-direction:alternate-reverse;
-    animation-duration:4s;
+    animation-duration: 54s;
 }
  
 .bg3 {
-    animation-duration:5s;
+    animation-duration: 35s;
 }
  
 .content {
@@ -44,13 +47,12 @@ body {
     top:50%;
     transform:translate(-50%, -50%);
 }
- 
+
 h1 {
     font-family:monospace;
 
 
 }
- taskItem
 .error{
   border-bottom-color: red;
 }
@@ -59,16 +61,22 @@ h1 {
   transition: all 500ms;
 }
 .card:hover{
-  transform: scale(1.12);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 25px 10px;
+  transform: scale(1.13);
+  box-shadow: rgba(100, 100, 111, 0.757) 0px 0px 20px 2px;
   z-index: 1;
   transition: all 200ms;
+  background-color: rgb(255, 255, 255) !important;
 }
 .card:active{
-  transform: scale(1.1);
-  background-color: rgba(100, 100, 111, 0.2);
+  transform: scale(1.05);
+  background-color: rgb(235, 235, 244);
   transition: all 90ms;
+}
+.card-hidden{
+  background-color: rgb(192, 192, 198);
+  color:rgb(75, 75, 82)
+}
+.clickedOn{
+  transform: scale(1.05);
 
 }
-
- main
