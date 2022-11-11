@@ -55,17 +55,17 @@
   </div>
 
   <div class="bg"></div>
-<div class="bg bg2"></div>
-<div class="bg bg3"></div>
+  <div class="bg bg2"></div>
+  <div class="bg bg3"></div>
 
   <div class="container">
-    <h2 class="row p-0 my-5">New Task</h2>
+    <h2 class="row p-0" id="taskTitle">New Task</h2>
     <form id="userForm">
-      <div class="row my-5">
+      <div class="row ">
         <!-- Title Box -->
         <div class="col-6 p-0">  
           <label for="title">Title</label><br>
-          <input type="text" id="title" key="title" name="title" class="px-5">
+          <input type="text" id="title" key="title" name="title">
           <div class="alert-warning col-6 invisible" role="alert">
             <p>Enter a name</p>
           </div>
@@ -73,7 +73,7 @@
          <!-- Assigned To Box -->
         <div class="col-6">
           <label for="assigned">Assigned To</label><br>
-          <input type="text" id="assigned" key="assignedTo" name="assigned" class="px-5">
+          <input type="text" id="assigned" key="assignedTo" name="assigned">
 
           <div class="alert-warning col-6 invisible" role="alert">
             <p>Enter a name</p>
@@ -81,16 +81,15 @@
         </div>
         </div>
         
-        <div class="row my-5">
+        <div class="row ">
           <label class="col-12 p-0" for="description">Description</label>
-          <input class="col-9 p-3" type="text" key="desc" id="description" name="description">
-
+          <textarea class="col-9" size="3" type="text" key="desc" id="description" rows="3" name="description"></textarea>
           <div class="alert-warning col-9 invisible" role="alert">
             <p>Enter a description.</p>
           </div>
         </div>
 
-      <div class="row my-5">
+      <div class="row ">
         <div class="col-6 p-0">
           <label for="status">Status</label><br>
             <select key="status" name="status" id="status">
@@ -101,7 +100,7 @@
               <option value="Done">Done</option>
             </select>
             <div class="alert-warning col-6 invisible" role="alert">
-              <p>Pick a status</p>
+              <p>Select a status</p>
             </div>
           </div>
           <!-- Date Box -->
@@ -109,20 +108,21 @@
           <label for="due">Due Date</label><br>
           <input key="date" type="date">
           <div class="alert-warning col-6 invisible" role="alert">
-            <p>Pick a date</p>
+            <p>Select a date</p>
           </div>
         </div>
       </div>
 
-      <div class="row my-5">
-        <button type="button" id="addTaskBtn" class="btn btn-primary px-4 mx-auto">Add Task</button>
+      <div class="row col-9 d-inline-flex flex-row-reverse" id="formButtonCont">
+        <button type="button" id="cancelButton" class="btn btn-danger px-4 mx-1 ">Cancel</button>
+        <button type="button" id="addTaskBtn" class="btn btn-primary px-4 mx-1 ">Add Task</button>
       </div>
     </form>
   </div>
    
   <section class="container tasklist">
     <!-- Tasks Heading -->
-    <h2 class="row p-0">Tasks</h2>
+    <h2 class="row p-0 my-5">Tasks</h2>
     
     <ul class="list-group w-100 d-flex flex-row flex-wrap text-dark">
     </ul>
