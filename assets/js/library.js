@@ -85,6 +85,12 @@ function onAddTaskClick(){
   }
 }
 function onTaskContainerClick(e){
+  if(e.target.classList.contains('btn-success')){
+let quote = getClickedTaskItem(e)
+let change = quote.info
+change.status = 'Completed'
+quote.updateInfo(change)
+  }else{
   if(updating) showCards();
 
   let selectedTask = getClickedTaskItem(e)
@@ -96,5 +102,5 @@ function onTaskContainerClick(e){
 
   hideSiblings(selectedTask)
   document.documentElement.scrollTop = 0;
-
+  }
 }
