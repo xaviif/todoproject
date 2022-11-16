@@ -6,14 +6,16 @@
 class Task{
   constructor(data, id){
     /**
-     * this.arr = {
+     * {data} holds all the arguments
+     * like so:
+     * {
      *  title: String
      *  desc: String
      *  assignedTo: String
      *  date: Date
+     *  status: String
      *  id: String
      * }
-     * Mustache will replace {{key}} with given value
      */
     this.template = document.getElementById("taskItem").cloneNode(true).innerHTML
     this.$;
@@ -21,14 +23,18 @@ class Task{
     this.arr.id = 'task_'+id
     this.parent;
   }
+  //returns {}
   get info(){
     return this.arr;
   }
 }
 
 Task.prototype.display = function(parent){
+  //parent = element to push to.
+  //Uses a Mustache template to create a new element.
   this.parent = parent;
   let ad = Mustache.render(this.template, this.arr);
+  //parse string as an html element
   parent.insertAdjacentHTML("beforeend", ad)
   this.$ = document.getElementById(this.arr.id)
   
@@ -53,6 +59,8 @@ Task.prototype.resetStyle = function(){
 
 
 Task.prototype.updateInfo = function(x){
+  //x = {}
+  //Removes self, and creates a new element using x as data.
   this.$.remove()
   let id = this.arr.id;
   this.arr = x;
