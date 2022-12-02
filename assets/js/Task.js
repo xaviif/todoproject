@@ -18,21 +18,45 @@ class Task{
     this.template = document.getElementById("taskItem").cloneNode(true).innerHTML
     this.$;
     this.arr = data
-    this.arr['id'] = 'task_'+id
+    if(!this.arr.formattedDate){
+      let month = new Intl.DateTimeFormat("en-US", {month: 'long'}).format(this.arr.date.getMonth() - 1)
+      let day =  (this.arr.date.getUTCDate() < 10)? '0'+this.arr.date.getUTCDate(): this.arr.date.getUTCDate();
+      let formattedDate = `${day} ${month} ${this.arr.date.getUTCFullYear()} `
+      this.arr.formattedDate = formattedDate;
+    }
+    this.arr.id = 'task_'+id
+    this.arr.status = "to-do"
+    this._index = id;
+
     this.parent;
   }
   get info(){
     return this.arr;
   }
- }
-  
- Task.prototype.display = function(parent){
+  get index(){
+    return this._index;
+  }
+}
+
+Task.prototype.display = function(parent){
+  //parent = element to push to.
+  //Uses a Mustache template to create a new element.
+
   this.parent = parent;
   let ad = Mustache.render(this.template, this.arr);
   parent.insertAdjacentHTML("beforeend", ad)
   this.$ = document.getElementById(this.arr.id)
-  }
+  this.$.style.flexOrder = this._index;
+  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
   
+}
+
+Task.prototype.reID = function(arrayIndex){
+  this.arr.id = 'task_'+arrayIndex
+  this._index = arrayIndex;
+  console.log(this.arr)
+  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
+
  Task.prototype.hide = function(){
   this.$.classList.add("card-hidden")
  }
@@ -59,5 +83,6 @@ class Task{
   let ad = Mustache.render(this.template, this.arr);
   this.parent.insertAdjacentHTML("beforeend", ad)
   this.$ = document.getElementById(this.arr.id)
- }
- 
+
+  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
+}

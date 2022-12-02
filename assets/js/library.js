@@ -2,17 +2,58 @@
 let userInput = document.querySelectorAll("[key]")
 let taskList = [];
 let idCounter = 0;
-let siblings = n => [...n.parentElement.children].filter(c=>c!=n)
-const getObjFromForm = n => [...userInput].reduce((a, v) => ({ ...a, [v.getAttribute("key")]: v.value}), {})
- 
+let siblings = n => [...n.parentElement.children].filter(c=>c!=n) //Returns all siblings of an element
+let dOptions = { dateStyle: "short", weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }
+const getObjFromForm = () => [...userInput].reduce((a, v) => ({ ...a, [v.getAttribute("key")]: ( v.getAttribute('key') === "date")? v.valueAsDate: v.value}), {}) //Returns form input as an object
+const removeAllChildNodes = (parent) => {
+  while (parent.lastElementChild) {
+    parent.removeChild(parent.lastElementChild);
+  }
+} 
+function dateIsValid(dateStr) {
+  const regex = /^\d{4}-\d{2}-\d{2}$/;
+
+  if (dateStr.match(regex) === null) {
+    return false;
+  }
+
+  const date = new Date(dateStr);
+
+  const timestamp = date.getTime();
+
+  if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) {
+    return false;
+  }
+
+  return date.toISOString().startsWith(dateStr);
+}
+
+function render(){
+  console.log("a")
+  let clonedButton = createTaskButton.cloneNode(true)
+  taskContainers.forEach(el => {
+    removeAllChildNodes(el)
+  })
+  taskContainers[0].append(clonedButton)
+}
+function load(){
+  let i = 0;
+  let localTask = JSON.parse(localStorage.getItem('task_'+i))
+  while(localTask){
+    addItem(localTask)
+    i++;
+    localTask = JSON.parse(localStorage.getItem('task_'+i))
+  }
+}
 function addItem(arr){
- //Populate data with user's input if no arguments
- let data = (arr === undefined) ? getObjFromForm() : arr
- let id = idCounter
- idCounter++;
- 
- taskList.push(new Task(data, id))
- taskList[id].display(document.getElementsByClassName("list-group")[0])
+  //Populate data with user's input if no arguments
+  let data = (arr === undefined) ? getObjFromForm() : arr
+  let id = idCounter
+  idCounter++;
+  //Push to taskList
+  taskList[id] = new Task(data, id)
+  taskList[id].display(document.getElementsByClassName("list-group")[idCounter%3])
+
 }
  
 function validateInput(){
@@ -85,46 +126,60 @@ function onAddTaskClick(){
    save()
  }
 }
+function updateTask(task){
+  let key = task.index
+  taskUpdate = task;
+  fillForm(task.info)
+  formUpdateTask()
+
+  hideSiblings(task)
+  document.documentElement.scrollTop = 0;
+}
 function onTaskContainerClick(e){
- if(e.target.classList.contains('btn-success')){
-let quote = getClickedTaskItem(e)
-let change = quote.info
-change.status = 'Completed'
-quote.updateInfo(change)
-save()
- }else{
- if(updating) showCards();
- 
- let selectedTask = getClickedTaskItem(e)
- taskUpdate = selectedTask;
- 
- let clickedTaskData = selectedTask.info
- fillForm(clickedTaskData)
- formUpdateTask()
- 
- hideSiblings(selectedTask)
- document.documentElement.scrollTop = 0;
- }
+  if(e.target.closest('li').classList.contains('utilCard')) return onCreateTaskClick(e)
+
+  let selectedTask = getClickedTaskItem(e)
+  let taskInfo = selectedTask.info
+  if(e.target.classList.contains('btn-danger')){
+    //Delete a card
+    taskList.splice(selectedTask.index, 1);
+    localStorage.clear()
+    e.target.closest('li').remove()
+    for(let [k, v] of Object.entries(taskList)) v.reID(k)
+    idCounter = taskList.length
+    render()
+    
+  }
+  else if(e.target.classList.contains('btn-success')){
+    //Complete a card's status
+    taskInfo.status = 'Completed'
+    selectedTask.updateInfo(taskInfo)
+  }else{
+    //Switch to update view
+    if(updating) showCards();
+    updateTask()
+    
+  }
 }
-function save() {
- for(let i in taskList) {
-   let value = JSON.stringify(taskList[i].info)
-   let key = taskList[i].info.id
-console.log(value)
-   localStorage.setItem(key, value)
- }
+function onCreateTaskClick(e){
+  if(e.target.classList.contains('btn-danger')){
+    document.querySelector("#newTaskButton #button").classList.toggle('hiddenCont')
+    document.querySelector("#newTaskButton #button").classList.toggle('d-flex')
+    document.querySelector("#newTaskButton #form").classList.toggle('hiddenCont')
+    document.querySelector("#newTaskButton #form").classList.toggle('animateHeight')
+    document.querySelector("#newTaskButton #button").classList.toggle('animateHeight')
+    return false;
+  }
+  let isClicked = document.querySelector("#newTaskButton #button").classList.contains('d-flex')
+  
+  if(isClicked){
+    document.querySelector("#newTaskButton #button").classList.toggle('hiddenCont')
+    document.querySelector("#newTaskButton #button").classList.toggle('d-flex')
+    document.querySelector("#newTaskButton #form").classList.toggle('hiddenCont')
+    document.querySelector("#newTaskButton #form").classList.toggle('animateHeight')
+    document.querySelector("#newTaskButton #button").classList.toggle('animateHeight')
+
+  }else{
+
+  }
 }
-function load() {
- console.log(localStorage.getItem('task_0'))
- let counter = 0
- let currentTask = JSON.parse(localStorage.getItem('task_'+counter))
- while(currentTask) {
-   console.log(currentTask)
-   currentTask.id = ''
-   addItem(currentTask)
-   counter++
- 
-   currentTask = JSON.parse(localStorage.getItem('task_'+counter))
- }
- 
- }

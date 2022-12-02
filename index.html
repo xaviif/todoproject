@@ -7,8 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/style.css"/>
   <script id="taskItem" type="text/template">
-    <li class="w-25 m-2 card" id="{{id}}">
-      <div class="card-body">
+    <li class="m-2 card " id="{{id}}">
+      <div class="card-body bg-light">
         <div class="px-0">
           <div class="row">
             <div class="col">
@@ -17,11 +17,8 @@
           </div>
           <div class="row">
             <div class="col">
+              <h6 >{{formattedDate}}</h6>
               <h6>{{assignedTo}}</h6>
-            </div>
-            <div class="col text-right">
-              <h6>{{status}}</h6>
-              <h6 >{{date}}</h6>
             </div>
           </div>
           <div class="row">
@@ -59,74 +56,78 @@
   <div class="bg bg3"></div>
 
   <div class="container">
-    <h2 class="row p-0" id="taskTitle">New Task</h2>
-    <form id="userForm">
-      <div class="row ">
-        <!-- Title Box -->
-        <div class="col-6 p-0">  
-          <label for="title">Title</label><br>
-          <input type="text" id="title" key="title" name="title">
-          <div class="alert-warning col-6 invisible" role="alert">
-            <p>Enter a name</p>
-          </div>
-        </div>
-         <!-- Assigned To Box -->
-        <div class="col-6">
-          <label for="assigned">Assigned To</label><br>
-          <input type="text" id="assigned" key="assignedTo" name="assigned">
-
-          <div class="alert-warning col-6 invisible" role="alert">
-            <p>Enter a name</p>
-          </div>
-        </div>
-        </div>
-        
-        <div class="row ">
-          <label class="col-12 p-0" for="description">Description</label>
-          <textarea class="col-9" size="3" type="text" key="desc" id="description" rows="3" name="description"></textarea>
-          <div class="alert-warning col-9 invisible" role="alert">
-            <p>Enter a description.</p>
-          </div>
-        </div>
-
-      <div class="row ">
-        <div class="col-6 p-0">
-          <label for="status">Status</label><br>
-            <select key="status" name="status" id="status">
-              <option value="" selected=""selected></option>
-              <option value="to-do">to-do</option>
-              <option value="In-Progress">In-Progress</option>
-              <option value="Review">Review</option>
-              <option value="Done">Done</option>
-            </select>
-            <div class="alert-warning col-6 invisible" role="alert">
-              <p>Select a status</p>
-            </div>
-          </div>
-          <!-- Date Box -->
-        <div class="col-6">
-          <label for="due">Due Date</label><br>
-          <input key="date" type="date">
-          <div class="alert-warning col-6 invisible" role="alert">
-            <p>Select a date</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row col-9 d-inline-flex flex-row-reverse" id="formButtonCont">
-        <button type="button" id="cancelButton" class="btn btn-danger px-4 mx-1 ">Cancel</button>
-        <button type="button" id="addTaskBtn" class="btn btn-primary px-4 mx-1 ">Add Task</button>
-      </div>
-    </form>
+    <h2 class="row p-0" id="taskTitle">Tasks</h2>
   </div>
    
-  <section class="container tasklist">
+  <section class="tasklist">
     <!-- Tasks Heading -->
-    <h2 class="row p-0 my-5">Tasks</h2>
-    
-    <ul class="list-group w-100 d-flex flex-row flex-wrap text-dark">
-    </ul>
-    
+    <h2 class="p-0 my-5"></h2>
+    <span class="d-flex flex-row w-100">
+      <ul class="list-group d-flex flex-column text-dark w-25">
+
+        <li class="card text-dark m-2 utilCard" id="newTaskButton">
+          <div class="card-body d-flex justify-content-center animateHeight" id="button">
+            <h1 class="align-self-center display-1">+</h1>
+          </div>
+          <form class="card-body hiddenCont" id="form">
+            <div class="px-0">
+              <div class="row">
+                <div class="col">
+                  <!--Title-->
+                  <input key="title" class="d-inline" placeholder="Title"></input>
+                  <div class="alert-warning invisible" role="alert">
+                    <p>Enter a title</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col w-25 float-left">
+                  <!--Assignedto-->
+                  <input key="assignedTo" placeholder="assigned to"></input>
+                  <div class="alert-warning invisible" role="alert">
+                    <p>Enter a name</p>
+                  </div>
+                </div>
+                <div class="col text-right float-right">
+                  <h6>to-do</h6>
+                  <!--Date-->
+                  <input key="date" type="date" ></h6>
+                  <div class="alert-warning invisible" role="alert">
+                    <p>Enter a date</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <textarea key="desc" placeholder="Notes."></textarea>
+                  <div class="alert-warning invisible" role="alert">
+                    <p>Enter a description</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <form class="text-right">
+                    <button type="button" class="btn btn-sm btn-success" id="addTaskBtn">
+                      Done
+                    </button>
+                    <button type="button" class="btn btn-sm btn-danger">
+                      Cancel
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </form>
+        </li> 
+      </ul>
+      <ul class="list-group d-flex flex-column text-dark w-25">
+
+      </ul>
+      <ul class="list-group d-flex flex-column text-dark w-25">
+
+      </ul>
+    </span>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/mustache@4.2.0/mustache.min.js"></script>
