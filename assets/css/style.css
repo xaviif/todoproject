@@ -16,7 +16,7 @@ body {
  
 .bg {
     animation: slide ease-in-out infinite alternate;
-    background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
+    background-image: linear-gradient(-60deg, rgb(147, 210, 211) 50%, rgb(149, 164, 220) 50%);
     bottom:0;
     left:-50%;
     opacity:.5;
@@ -28,28 +28,28 @@ body {
  
 .bg2 {
     animation-direction:alternate-reverse;
-    animation-duration: 54s;
+    animation-duration: 120s;
 }
  
 .bg3 {
-    animation-duration: 35s;
+    animation-duration: 100s;
 }
  
 .content {
-    background-color:rgba(255,255,255,.8);
-    border-radius:.25em;
-    box-shadow:0 0 .25em rgba(0,0,0,.25);
-    box-sizing:border-box;
-    left:50%;
-    padding:10vmin;
-    position:fixed;
-    text-align:center;
-    top:50%;
-    transform:translate(-50%, -50%);
+  background-color:rgba(255,255,255,.8);
+  border-radius:.25em;
+  box-shadow:0 0 .25em rgba(0,0,0,.25);
+  box-sizing:border-box;
+  left:50%;
+  padding:10vmin;
+  position:fixed;
+  text-align:center;
+  top:50%;
+  transform:translate(-50%, -50%);
 }
 
 h1 {
-    font-family:monospace;
+  font-family:monospace;
 
 
 }
@@ -59,6 +59,7 @@ h1 {
 .card{
   box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 5px 0px;
   transition: all 500ms;
+  overflow: hidden;
 }
 .card:hover{
   transform: scale(1.13);
@@ -67,7 +68,7 @@ h1 {
   transition: all 200ms;
   background-color: rgb(255, 255, 255) !important;
 }
-.card:active{
+.card:not(#newTaskButton):active{
   transform: scale(1.05);
   background-color: rgb(235, 235, 244);
   transition: all 90ms;
@@ -79,4 +80,33 @@ h1 {
 .clickedOn{
   transform: scale(1.05);
 
+}
+.tasklist{
+  width: 100vw;
+  padding: 0 4vw;
+  display: flex;
+}
+ul{
+  justify-self: center;
+}
+.card-body{
+  overflow: auto;
+
+  transition: all 0.75s ease-out;
+
+}
+.hiddenCont{
+  clip: rect(auto, auto, 0rem, auto);
+  max-height: 0px;
+  position: absolute;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+
+  transition: all .5s ease-in;
+}
+.animateHeight{
+  clip: rect(auto, auto, 100vh, auto);
+  max-height: 100vh;
+  opacity: 1;
 }
