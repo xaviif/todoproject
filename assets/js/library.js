@@ -1,7 +1,8 @@
 //Grab all elements with an attribute of key
-let userInput = document.querySelectorAll("[key]") 
-let taskList = []; //Each represented by Task.
+let userInput = document.querySelectorAll("[key]")
+let taskList = [];
 let idCounter = 0;
+
 let introAnimation = true;
 const dOptions = { dateStyle: "short", weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }
 const siblings = n => [...n.parentElement.children].filter(c=>c!=n) //Returns all siblings of an element
@@ -42,33 +43,28 @@ function addItem(arr){
   //Push to taskList
   taskList[id] = new Task(data, id)
   taskList[id].display(document.getElementsByClassName("list-group")[idCounter%3], introAnimation)
+
 }
 function formNewTask(){
-  //Stage website for creating a new task
-  taskUpdate = "";
-  updating = false;
-  document.querySelector('#taskTitle').textContent = "New Task"
-  addTaskButton.textContent = "Add Task"
+ taskUpdate = "";
+ updating = false;
+ document.querySelector('#taskTitle').textContent = "New Task"
+ addTaskButton.textContent = "Add Task"
 }
 function fillForm(data){
-  //data = {}
-  //Populate all inputs with appropiate values from {data}
-  userInput.forEach(function(i){
-    let key = i.getAttribute("key")
-    i.value = data[key]
-  })
+ userInput.forEach(function(i){
+   let key = i.getAttribute("key")
+   i.value = data[key]
+ })
 }
 function getClickedTaskItem(e){
-  //e = element
-  //Returns a single task from taskList
-  let id = parseInt(e.target.closest('.card').getAttribute("id").replace('task_',''));
-  return taskList[id]
+ let id = parseInt(e.target.closest('.card').getAttribute("id").replace('task_',''));
+ return taskList[id]
 }
-
 /**On Click Functions */
 function onCancelClick(){
-  clearForms()
-  if(updating) formNewTask()
+ clearForms()
+ if(updating) formNewTask()
 }
 function onAddTaskClick(){
   introAnimation = false;
