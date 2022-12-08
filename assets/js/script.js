@@ -1,17 +1,18 @@
 let addTaskButton = document.getElementById("addTaskBtn")
-let taskContainer = document.getElementsByClassName('list-group')[0]
+let taskContainers = document.querySelectorAll('.list-group')
 let cancelButton = document.getElementById("cancelButton")
+let createTaskButton = document.getElementById("newTaskButton")
 let updating = false;
 let taskUpdate = "";
- 
-cancelButton.addEventListener("click", onCancelClick)
- 
-addTaskButton.addEventListener("click", onAddTaskClick)
- 
-taskContainer.addEventListener('click', function(e){
- onTaskContainerClick(e)
+
+taskContainers.forEach(function(el){
+  el.addEventListener('click', function(e){
+    onTaskContainerClick(e)
+  });
+})
+taskContainers[0].addEventListener('submit', function(e){
+  onAddTaskClick()
+  e.preventDefault()
 });
-document.addEventListener('DOMContentLoaded', function () {
- // do something here ...
- load()
-}, false);
+document.addEventListener("DOMContentLoaded", load)
+
