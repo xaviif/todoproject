@@ -1,5 +1,0 @@
-TODO
-Beautify the form
-Fix delete
-Completed Task section
-Update Task interaction

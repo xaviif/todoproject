@@ -5,15 +5,13 @@ let createTaskButton = document.getElementById("newTaskButton")
 let updating = false;
 let taskUpdate = "";
 
-// cancelButton.addEventListener("click", onCancelClick)
-addTaskButton.addEventListener("click", onAddTaskClick)
-
-// createTaskButton.addEventListener('click', function(e){
-//   onCreateTaskClick(e)
-// })
 taskContainers.forEach(function(el){
   el.addEventListener('click', function(e){
     onTaskContainerClick(e)
   });
 })
+taskContainers[0].addEventListener('submit', function(e){
+  onAddTaskClick()
+  e.preventDefault()
+});
 document.addEventListener("DOMContentLoaded", load)

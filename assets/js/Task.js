@@ -27,7 +27,6 @@ class Task{
       this.arr.formattedDate = formattedDate;
     }
     this.arr.id = 'task_'+id
-    this.arr.status = "to-do"
     this._index = id;
     this.parent;
   }
@@ -39,7 +38,6 @@ class Task{
     return this._index;
   }
 }
-
 Task.prototype.display = function(parent){
   //parent = element to push to.
   //Uses a Mustache template to create a new element.
@@ -48,36 +46,40 @@ Task.prototype.display = function(parent){
   //parse string as an html element
   parent.insertAdjacentHTML("beforeend", ad)
   this.$ = document.getElementById(this.arr.id)
-  this.$.style.flexOrder = this._index;
-  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
+  if(this.arr.status === "completed") this.$.querySelector('.btn-success').replaceWith("Completed!")
   
+  if (introAnim) this.$.style.animationDelay =  (this._index * 100) + "ms";
+  else{
+    document.querySelectorAll('.card:not(#newTaskButton)').forEach(function(El){
+      El.style.opacity = 1;
+      El.style.animation = "none";
+    })
+  }
+
+  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
 }
 
 Task.prototype.reID = function(arrayIndex){
   this.arr.id = 'task_'+arrayIndex
   this._index = arrayIndex;
-  console.log(this.arr)
   localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
   
 }
 
-Task.prototype.hide = function(){
-  this.$.classList.add("card-hidden")
-}
+Task.prototype.hide = function(){ this.$.classList.add("card-hidden") }
 
-Task.prototype.pop = function(){
-  this.$.classList.add("clickedOn")
-}
+Task.prototype.pop = function(){ this.$.classList.add("clickedOn") }
 
 Task.prototype.resetStyle = function(){
-  if(this.$.classList.contains("card-hidden"))
-    this.$.classList.remove("card-hidden")
-  
-  if(this.$.classList.contains("clickedOn"))
-    this.$.classList.remove("clickedOn")
-  console.log("style reset")
+  this.$.setAttribute("class", "m-2 card")
+  console.log("reset")
 }
-
+Task.prototype.markAsComplete = function(){
+  this.arr.status = "completed"
+  this.$.classList.add("completed")
+  this.$.querySelector('.btn-success').replaceWith("Completed!")
+  localStorage.setItem(this.arr.id, JSON.stringify(this.arr))
+}
 
 Task.prototype.updateInfo = function(x){
   //x = {}

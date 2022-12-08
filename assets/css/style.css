@@ -1,4 +1,12 @@
 *{scroll-behavior: smooth;}
+@keyframes introCard {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 body {
   margin:0;
   color: white;
@@ -61,6 +69,12 @@ h1 {
   transition: all 500ms;
   overflow: hidden;
 }
+.card:not(#newTaskButton){
+  opacity: 0;
+  animation: introCard 750ms ease-in 0ms forwards;
+  animation-delay: 0ms;
+
+}
 .card:hover{
   transform: scale(1.13);
   box-shadow: rgba(100, 100, 111, 0.757) 0px 0px 20px 2px;
@@ -83,7 +97,7 @@ h1 {
 }
 .tasklist{
   width: 100vw;
-  padding: 0 4vw;
+  padding: 0 2vw;
   display: flex;
 }
 ul{
@@ -109,4 +123,7 @@ ul{
   clip: rect(auto, auto, 100vh, auto);
   max-height: 100vh;
   opacity: 1;
+}
+.flex-even {
+  flex: 1;
 }
